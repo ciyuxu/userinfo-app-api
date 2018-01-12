@@ -6,7 +6,11 @@ module.exports = function (app) {
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const users = new Schema({
-    text: { type: String, required: true },
+    name: { type: String, required: true },
+    gender: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true },
+    addressIds: [{ type: Schema.Types.ObjectId, ref: 'addresses' }],
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
   });
